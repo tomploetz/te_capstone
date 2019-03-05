@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+	//int sessionValue = (int)Session["RecipeId"];
+}
+
+@using Capstone.Web.Models
+@model Ingredient
+
+<section class="bgimg pt-5">
+    
+    <div class="card-deck pt-5 m-auto w-75">
+                <div class="card rounded m-5">
+                    @using (Html.BeginForm("Ingredient", "Home", FormMethod.Post, new { @class = "ingForm" }))
+                    {
+                        <div class="login-align card-header text-center" id="section2" style="background-color:honeydew"><h2>Add Ingredient</h2></div>
+                        <div class="card-body" style="text-align:center;">
+
+                            <label for="Name"><b>Ingredient:  </b></label>
+
+                            <input type="text" placeholder="Enter Ingredient" name="Name" required>
+
+							<div class="form-actions">
+								<button type="submit" style="margin-top: 20px" class="btn btn-success btn-sm">Submit</button>
+								<a href="@Url.Action("Dashboard", "User")" class="btn btn-success btn-sm" style="margin-top: 20px" role="button">Dashboard</a>
+								
+
+								</div>
+                        </div>
+                    }
+                </div>
+
+                <div class="card example-1 scrollbar m-5">
+                    <div id="section1" class="card-header" style="text-align: center; background-color:honeydew"><h2>Ingredient List</h2></div>
+                    <div class="card-body">
+                        <div style="text-align: center">
+                            @foreach (var item in ViewBag.Ingredients)
+                            {
+                                <p>@item.Name</p>
+                            }
+                        </div>
+                </div>
+            </div>
+    </div>
+</section>
+
+
+
+

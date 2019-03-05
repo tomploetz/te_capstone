@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+@using Capstone.Web.Models.ViewModels
+@model MealViewModel
+
+<section class="bgimg pt-5">
+    <div class="card m-auto p-3" style="width: 310px; height:auto; margin-top:100px !important;">
+        <div id="section1" class="card-header" style="text-align: center; background-color:white"><h1>Meal Builder</h1></div>
+        @using (Html.BeginForm("AddMeal", "Meal", FormMethod.Post, new { @class = "mealForm" }))
+        {
+
+            <div class="container-recipe">
+                @*<h1 class="login-align">Meal Builder</h1>*@
+
+                <label for="Name" class="mt-3 mb-0"><b>Meal Name</b></label>
+                <input type="text" class="form-control" placeholder="Enter Meal Name" name="Name" required>
+
+                <label for="Description" class="mt-3 mb-0"><b>Description</b></label>
+                <input type="text" class="form-control" placeholder="Enter Description" name="Description" required>
+
+                <label for="shit" class="mt-3 mb-0"><b>Add Recipes</b></label>
+                <div class="add-ingredient">
+                    @Html.ListBox("RecipeSelection", Model.Recipes, new { @class = "shit add-ingredient-field" })
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success btn-space">Submit</button>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</section>

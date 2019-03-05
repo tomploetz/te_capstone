@@ -1,0 +1,215 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Libre Franklin', sans-serif;
+}
+
+/*Nav Bar*/
+
+nav {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/*padding top affects top of navbar*/
+
+.navbar-nav  li {
+    padding-top: 35px !important;
+    height: 100px;
+}
+
+.navbar-brand > img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100px;
+    width:320px;
+}
+
+/*Background cover image*/
+
+.bgimg {
+    width: 100%;
+    height: 1200px;
+    background-image: url('Photos/image-from-rawpixel-id-104900-original.jpg');
+    background-size: cover;
+    background-position: center;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.container-fluid {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+.shit {
+	width: 100%;
+}
+
+
+/*LOGIN*/
+
+.btn-space {
+
+    margin-top: 20px;
+}
+
+
+.login-align{
+    text-align: center !important;
+}
+
+.toBold{
+    font-weight: bold;
+}
+
+
+/*Register*/
+
+.btn-center {
+    text-align: center;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+.card-deck {
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 0px !important;
+}
+
+.card-title{
+    font-weight:bold;
+    text-align:center;
+    margin: 30px;
+}
+
+/*Slider for Home Page (parallax) */
+
+.parallax {
+    /* The image used */
+    background-image: url('Photos/image-from-rawpixel-id-104900-original.jpg');
+    /* Set a specific height */
+    min-height: 850px;
+    /* Create the parallax scrolling effect */
+    background-attachment: inherit;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*recipe*/
+
+.add-ingredient-field{
+    width:100%;
+}
+
+.box-size{
+    width:100%;
+    height:auto;
+}
+
+
+/*Dashboard*/
+
+.dashboard-title {
+    text-align: center;
+}
+
+.center-button {
+    margin: 15px;
+    background-color: transparent;
+    text-align: center;
+
+}
+
+/*Scroll Bar*/
+
+.example-1 {
+    position: relative;
+    overflow-y: scroll;
+    height: 200px;
+}
+
+.addingredientbox {
+    width: 200px;
+    max-width: 400px;
+}
+
+
+/*Recipe detail view*/
+
+ol, ul {
+    list-style: none;
+    text-align: center;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: inherit;
+    transition: all .5s;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 5px;
+}
+
+.center {
+    margin: auto;
+    width: 60%;
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.card mx-auto p-4 {
+    text-align: center;
+    margin: 50px;
+}
+
+.card-img-top {
+    height: auto;
+    max-width: 100%;
+    margin: 10px;
+    text-align:center;
+}
+
+.card-text{
+    text-align:center;
+}
+
+/*About*/
+
+html {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 24%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+}
+
+@media screen and (max-width: 1000px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+
+
+
+
+
+}

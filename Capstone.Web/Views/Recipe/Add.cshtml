@@ -1,0 +1,57 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+@using Capstone.Web.Models.ViewModels
+@model RecipeViewModel
+
+
+<section class="bgimg pt-5">
+    <div class="card m-auto p-3" style="width: 500px; height:auto; margin-top: 150px;">
+        <div id="section1" class="card-header" style="text-align: center; background-color:white"><h1>Recipe Builder</h1></div>
+        @using (Html.BeginForm("Add", "Recipe", FormMethod.Post, new { @class = "recForm" }))
+        {
+
+            <div class="container-recipe">
+                @*<h1 class="login-align">Recipe Builder</h1>*@
+
+
+                <label for="Name" class="mt-3 mb-0"><b>Recipe Name</b></label>
+                <input type="text" class="form-control" placeholder="Enter Recipe Name" name="Name" required>
+
+                <label for="Description" class="mt-3 mb-0"><b>Description</b></label>
+                <input type="text" class="form-control" placeholder="Enter Description" name="Description" required>
+
+            <label for="PrepTime" class="mt-3 mb-0"><b>Preperation Time (In Minutes)</b></label>
+            <input type="text" class="form-control" placeholder="Enter Preperation Time" name="PrepTime" required>
+
+            <label for="CookTime" class="mt-3 mb-0"><b>Cook Time (In Minutes)</b></label>
+            <input type="text" class="form-control" placeholder="Enter Cook Time" name="CookTime" required>
+
+                <label for="shit" class="mt-3 mb-0"><b>Add an Ingredient</b></label>
+                <div class="add-ingredient">
+                    @Html.ListBox("IngredientSelection", Model.Ingredients, new { @class = "shit add-ingredient-field" })
+                </div>
+
+                <div class="box-size">
+                    <label for="Instructions" class="mt-3 mb-0"><b>Recipe Instructions</b></label>
+                    @Html.TextAreaFor(m => m.Instructions, new { @class = "box-size" })
+                </div>
+
+                <div class="center-button">
+                    <button type="submit" class="btn btn-success btn-sm">Continue</button>
+                    <a href="@Url.Action("Ingredient", "Home")" class="btn btn-success btn-sm" role="button">Add Ingredient</a>
+                </div>
+            </div>
+
+        }
+    </div>
+
+</section>
+
+
+
+
+

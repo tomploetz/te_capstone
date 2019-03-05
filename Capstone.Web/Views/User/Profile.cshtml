@@ -1,0 +1,8 @@
+﻿@using Capstone.Web.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    User sessionValue = Session["User"] as User;
+}
+
+<h1>Profile</h1>
+<h1>Welcome, @sessionValue.FirstName</h1>

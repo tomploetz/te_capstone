@@ -1,0 +1,178 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	User sessionValue = Session["User"] as User;
+	//int selection = Session["View"];
+}
+@using Capstone.Web.Models
+@model Capstone.Web.Models.ViewModels.DashboardViewModel
+
+
+<section class="bgimg pt-5">
+
+
+    <div class="card text-center m-auto" style="width:90%; min-height:90%;">
+        <div class="card-header">
+
+
+            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Meal Plans</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" id="meals-tab" data-toggle="tab" href="#meals" role="tab" aria-controls="meals" aria-selected="false">Meals</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" id="recipe-tab" data-toggle="tab" href="#recipe" role="tab" aria-controls="recipe" aria-selected="false">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="ing-tab" data-toggle="tab" href="#ing" role="tab" aria-controls="ing" aria-selected="false">Ingredients</a>
+                </li>
+
+            </ul>
+        </div>
+
+        @*Meal Plans*@
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+                @*<h1 class="login-align">Meal Plan</h1>*@
+
+                <div class="center-button">
+                    <a href="@Url.Action("AddMealPlan", "Meal")" class="btn btn-success" role="button">Create Meal Plan</a>
+					<p></p>
+                </div>
+
+                <div class="card-columns m-3">
+                    @foreach (var item in Model.UserMealPlans)
+                    {
+                    <div class="card" style="width: 100%;">
+                        <div id="section1" class="card-header" style="text-align: center; background-color:honeydew"><h2>@item.Name</h2></div>
+                        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+                        <div class="card-body">
+                            @*<h5 class="card-title" style="text-align:center;"><b>@item.Name</b></h5>*@
+                            <div class="text-center m-3">
+                                <form action="@Url.Action("DeleteMealPlan", "Meal")" method="post">
+                                    <a href="@Url.Action("Dashboard", "User", new { mealPlanId = item.Id})" class="btn btn-outline-success btn-sm" role="button">View</a>
+                                    @*<a href="@Url.Action("", "Meal", new { mealPlanId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Edit</a>*@
+                                    <a href="@Url.Action("GroceryList", "User", new { mealPlanId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Grocery List</a>
+                                    <input type="hidden" name="mealPlanId" value="@item.Id" />
+                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+            @*Meals*@
+
+            <div class="tab-pane fade" id="meals" role="tabpanel" aria-labelledby="meals-tab">
+
+                <div class="center-button">
+                    <a href="@Url.Action("AddMeal", "Meal")" class="btn btn-success" role="button">Add Meal</a>
+                </div>
+
+                <div class="card-columns m-3">
+                    @foreach (var item in Model.UserMeals)
+                    {
+                    <div class="card" style="width: 100%;">
+                        <div id="section1" class="card-header" style="text-align: center; background-color:honeydew"><h2>@item.Name</h2></div>
+                        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+                        <div class="card-body">
+                            @*<h5 class="card-title">@item.Name</h5>*@
+                            <div class="text-center m-3">
+                                <form action="@Url.Action("DeleteMeal", "Meal")" method="post">
+                                    <a href="@Url.Action("Dashboard", "User", new { mealId = item.Id})" class="btn btn-outline-success btn-sm" role="button">View</a>
+                                    @*<a href="@Url.Action("", "Meal", new { mealPlanId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Edit</a>*@
+                                    <a href="@Url.Action("GroceryList", "User", new { mealId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Grocery List</a>
+                                    <input type="hidden" name="mealId" value="@item.Id" />
+                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+
+
+            @*Recipe*@
+
+            <div class="tab-pane fade" id="recipe" role="tabpanel" aria-labelledby="recipe-tab">
+
+                <div class="center-button">
+                    <a href="@Url.Action("Add", "Recipe")" class="btn btn-success" role="button">Add Recipe</a>
+
+                </div>
+
+                <div class="card-columns m-3">
+                    @foreach (var item in Model.UserRecipes)
+                    {
+                    <div class="card" style="width: 100%;">
+                        @*<img class="card-img-top" src="..." alt="Card image cap">*@
+                        <div id="section1" class="card-header" style="text-align: center; background-color:honeydew"><h2>@item.Name</h2></div>
+                        <div class="card-body">
+                            @*<h5 class="card-title">@item.Name</h5>*@
+                            <p class="card-text" style="margin:20px;">@item.Description</p>
+                            <div class="text-center m-3">
+                                <form action="@Url.Action("DeleteRecipe", "Recipe")" method="post">
+                                    <a href="@Url.Action("RecipeDetail", "Recipe", new { recipeId = item.Id})" class="btn btn-outline-success btn-sm" role="button">View</a>
+                                    @*<a href="@Url.Action("Edit", "Recipe", new { recipeId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Edit</a>*@
+                                    <a href="@Url.Action("GroceryList", "User", new { recipeId = item.Id})" class="btn btn-outline-success btn-sm" role="button">Grocery List</a>
+                                    <input type="hidden" name="recipeId" value="@item.Id" />
+                                    <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                </form>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    }
+                </div>
+            </div>
+
+
+            @*Ingredient*@
+
+            <div class="tab-pane fade" id="ing" role="tabpanel" aria-labelledby="ing-tab">
+
+                <div class="center-button">
+                    <a href="@Url.Action("Ingredient", "Home")" class="btn btn-success" role="button">Add Ingredient</a>
+                </div>
+
+
+                <div class="card example-1 scrollbar m-5 m-auto" style="width: 700px; height: 600px; margin-top:50px !important;">
+                    <div id="section1" class="card-header" style="text-align: center; background-color:honeydew"><h2>Ingredient List</h2></div>
+                    <div class="card-body">
+                        <div style="text-align: center">
+                            @foreach (var item in Model.Ingredients)
+                            {
+                                <p>@item.Name</p>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+
+
+

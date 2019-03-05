@@ -1,0 +1,33 @@
+﻿@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IList<Capstone.Web.Models.RecipeIngredient>
+
+
+@*<h1>Grocery List</h1>
+@for(int i = 0; i < Model.Count; i++)
+{
+<p>@Model[i].Quantity @Model[i].UnitType of @Model[i].Name</p>
+}*@
+
+<section class="bgimg pt-5">
+    <div class="card mx-auto" style="max-width:500px; height:auto;">
+        <div class="card-header" style="background-color:white;">
+            <h2 class="card-title">Grocery List</h2>
+            <div class="card-body">
+            </div>
+            <ul class="list-group list-group-flush">
+                <ul class="list-group-item">
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <li>@Model[i].Quantity @Model[i].UnitType of @Model[i].Name</li>
+                    }
+
+                </ul>
+        </div>
+
+        <a href="@Url.Action("Dashboard", "User")" class="btn btn-outline-success" style="margin: 20px !important;" role="button">Dashboard</a>
+
+
+    </div>
+</section>

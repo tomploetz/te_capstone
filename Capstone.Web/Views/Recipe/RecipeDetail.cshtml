@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+@using Capstone.Web.Models.ViewModels
+@model RecipeViewModel
+
+
+<section class="bgimg pt-5">
+    <div class="card mx-auto p-2" style="max-width:500px; height:auto;">
+        <div class="text-center">
+            @*<img class="card-img-top" src="https://c2.staticflickr.com/4/3284/2856507149_fb00645fa6_z.jpg?zz=1" alt="Card image cap" style="height:75%;max-width: 75%;">*@
+        </div>
+        <div class="card-body" @*style="padding: 0rem !important;"*@>
+            <h2 class="card-title">@Model.Name</h2>
+            <p class="card-text">@Model.Description</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Prep Time: @Model.PrepTime minutes | Cook Time: @Model.CookTime minutes | Total Time: @Model.TotalTime minutes</li>
+            <div class="list-group-item">
+                <b>Ingredients</b>
+                <br />
+                @foreach(var item in Model.RecipeIngredients)
+				{
+					<li>@item.Quantity @item.UnitType @item.Name</li>
+				}
+
+            </div>
+            <ol class="list-group-item">
+                <b>Directions</b>
+                <br />
+                <li>@Model.Instructions</li>
+            </ol>
+        </ul>
+        <a href="@Url.Action("Dashboard", "User")" class="btn btn-outline-success btn-sm" role="button">Dashboard</a>
+
+    </div>
+
+    </section>
+

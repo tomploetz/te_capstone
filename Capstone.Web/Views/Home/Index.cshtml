@@ -1,0 +1,85 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Capstone.Web.Models.ViewModels
+@model LoginViewModel
+
+
+<section>
+	<div class="parallax pt-5">
+		@{
+			if (Session["User"] == null)
+			{
+				<div class="card m-auto p-4" style="width: 350px; margin-top:100px;">
+					@using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "logForm" }))
+					{
+						<div class="container">
+							<h2 class="login-align">Login</h2>
+
+							<label for="UserName" class="mt-3 mb-0">
+								<b>Username</b>
+							</label>
+							<input type="text" class="form-control" placeholder="Enter username" name="UserName" required />
+
+							<label for="Password" class="mt-3 mb-0">
+								<b>Password</b>
+							</label>
+							<input type="password" class="form-control" placeholder="Enter password" name="Password" required />
+						
+							<div class="form-actions">
+								<button type="submit" class="btn btn-success btn-lg btn-space">Login</button>
+							</div>
+
+							<br />
+							<p>New User? <a href="@Url.Action("Register", "User")">Create New Account</a></p>
+							<p>New to Meal Planner? <a href="#jumpToPage">Learn More!</a></p>
+						</div>
+					}
+				</div>
+			}
+		}
+
+	</div>
+</section>
+
+
+
+    <div id="jumpToPage"style="height:750px;background-color:white;margin-top: 100px;">
+
+        <div class="card-deck" style="display: flex; align-content:center; height: 625px !important; width:auto">
+            <div class="card">
+                <img class="card-img-top" src="~/Content/Photos/image-from-rawpixel-id-384722-jpeg.jpg" alt="Card image cap" style="width:auto; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center;">Recipe Builder</h5>
+                    <p class="card-text" style="text-align:center;">
+                        Build your own unique recipes or add your favorites from all over the internet!  Our interactive recipe builder
+                        allows you to add and edit each recipe, customizing it to your lifestyle.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top" src="~/Content/Photos/NEWpic.jpg" alt="Card image cap" style="width:auto; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center;">Meal Planner</h5>
+                    <p class="card-text" style="text-align:center;">
+                        Take the guesswork out of meal planning!
+                        <br />
+                        Use your recipes to build a meal and add your meals to a Meal Plan- saving you valuable time on busy weeknights!
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img class="card-img-top" src="~/Content/Photos/image-from-rawpixel-id-404359-jpeg.jpg" alt="Card image cap" style="width:auto; object-fit: cover;" >
+                <div class="card-body">
+                    <h5 class="card-title" style="text-align:center;">Smart Grocery List</h5>
+                    <p class="card-text" style="text-align:center;">Save time at the store with our interactive grocery list of everything you need for each week’s meal plan.  Add, edit, remove- the list updates automatically!</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+

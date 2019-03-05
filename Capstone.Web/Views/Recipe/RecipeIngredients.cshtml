@@ -1,0 +1,50 @@
+﻿@using Capstone.Web.Models
+@model Dictionary<string, RecipeIngredient>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //List<RecipeIngredient> sessionValue = Session["Ingredients"] as List<RecipeIngredient>;
+    //List<SelectListItem> unitTypeList = Model
+}
+
+
+<section class="bgimg pt-5">
+
+    <div class="card m-auto p-3 w-50" style=" text-align:center; margin-top: 200px;">
+        <h2 class="login-align mt-0 mb-4">Ingredient Details</h2>
+        @using (Html.BeginForm("RecipeIngredients", "Recipe", FormMethod.Post, new { @class = "recForm" }))
+		{
+			<div class="card-body">
+				<table class="w-100 h-auto">
+					<tr>
+						<th class="text-left">Name</th>
+						<th>Quantity</th>
+						<th>Unit</th>
+					</tr>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td class="text-left">
+								<div class="mt-2 mb-0">
+									@Html.TextBox("Name", item.Value.Name, new { @readonly = "readonly"})
+								</div>
+							</td>
+							<td>
+								<div>
+									<input type="number" placeholder="0" id="Quantity" name="Quantity" min="1" max="100000">
+								</div>
+							</td>
+							<td>@Html.DropDownList("UnitType", item.Value.UnitTypes)</td>
+						</tr>
+					}
+				</table>
+			</div>
+			<br />
+			<div class="form-actions">
+				<button type="submit" class="btn btn-success btn-space">Submit</button>
+			</div>
+		}
+
+    </div>
+</section>
+
